@@ -1,7 +1,18 @@
 <?php
+//declaracion de variables
+$servidor = 'localhost';
+$db = 'ecovida';
+$user = 'root';
+$pass ='';
 
-$conexion = new mysqli("localhost", "noe" ,"123", "ecovida");
-$conexion -> set_charset("utf8");
+//hacemos la conexion con la base de datos
+try{
+    $conexion = new PDO('mysql:host='.$servidor.';dbname='.$db, $user,$pass);
+}catch(PDOException $e){
+    echo "Error al conectar con la base de datos";
+    exit;
+}
+
+return $conexion;
+
 ?>
-
-
