@@ -15,44 +15,116 @@ if (isset($_SESSION['usuario'])) {
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="preload" href="../css/normalize.css" as="style">
-        <link rel="stylesheet" href="../css/normalize.css">
-        <link rel="preload" href="../css/menu-principal.css" as="style">
-        <link rel="stylesheet" href="../css/menu-principal.css">
+        <script src="https://kit.fontawesome.com/cbd3c2f268.js" crossorigin="anonymous"></script>
+        <link rel="preload" href="http://localhost/ecovida/css/normalize.css" type="text/css" as="style">
+        <link rel="stylesheet" href="http://localhost/ecovida/css/normalize.css" type="text/css">
+        <link rel="preload" href="http://localhost/ecovida/css/menu-principal.css" type="text/css" as="style">
+        <link rel="stylesheet" href="http://localhost/ecovida/css/menu-principal.css" type="text/css">
         <title>Menu Principal</title>
     </head>
 
-    <body>
-        <div class="main">
-            <div class="menu">
-                <h2><?php echo "<p>Bienvenido " . $_SESSION['usuario'] . "</p>" ?></h2>
-                <a href="#">Principal</a>
-                <a href="#">Calendario</a>
-                <a href="#">Pacientes</a>
-                <a href="#">Medico</a>
-                <a href="#">Nuevo Estudio</a>
-                <a href="#">Resultados</a>
-                <a href="#">Examenes</a>
-                <a href="#">Usuarios</a>
-                <a href="#">Historial</a>
-                <a href="../salir.php">Cerrar sesion</a>
+    <body id="body">
+
+        <header>
+            <div class="icon__menu">
+                <i class="fas fa-bars" id="btn_open"></i>
             </div>
-            <div class="body">
-                <img src="/img/ecovida.jpg" alt="">
-                <div class="ubicacion">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="80" height="80" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                        <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-                    </svg>
-                    <p>Calle Allende Norte 217,<span>,90500 Huamantla,</span><span>Tlaxcala</span></p>
-                </div>
+        </header>
+
+        <div class="menu__side" id="menu_side">
+
+            <div class="name__page">
+            <img src="../img/avatar.png"> 
+            <h3><?php echo "<p>Bienvenido " . $_SESSION['usuario'] . "</p>" ?></h3>
             </div>
+
+            <div class="options__menu">
+
+                <a href="#" class="selected">
+                    <div class="option">
+                        <i class="fas fa-home" title="Inicio"></i>
+                        <h4>Principal</h4>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="option">
+                    <i class="fa-solid fa-calendar"></i>
+                        <h4>Calendario</h4>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="option">
+                    <i class="fa-solid fa-notes-medical"></i>
+                        <h4>Pacientes</h4>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="option">
+                    <i class="fa-solid fa-user-doctor"></i>
+                        <h4>Médico</h4>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="option">
+                    <i class="fa-solid fa-eye-dropper"></i>
+                        <h4>Estudios</h4>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="option">
+                        <i class="far fa-address-card" title="Nosotros"></i>
+                        <h4>Resultados</h4>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="option">
+                    <i class="fa-solid fa-microscope"></i>
+                        <h4>Examenes</h4>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="option">
+                    <i class="fa-solid fa-user"></i>
+                        <h4>Usuario</h4>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="option">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                        <h4>Historial</h4>
+                    </div>
+                </a>
+
+                <a href="../salir.php">
+                    <div class="option">
+                    <i class="fa-solid fa-door-closed"></i>
+                        <h4>Cerrar sesión</h4>
+                    </div>
+                </a>
+
+            </div>
+
         </div>
+
+        <main>
+            <h1>Title Exemple</h1><br>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam sapiente cumque dicta animi explicabo sequi. Ex amet et, dolor eligendi commodi consectetur quo voluptatibus, cum nemo porro veniam at blanditiis?</p> <br>
+
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident adipisci beatae impedit quia, deleniti quasi sequi iusto exercitationem nihil nulla, laboriosam dolore corrupti fuga officiis? Odit a mollitia id magnam amet delectus quia blanditiis reprehenderit explicabo eveniet! Rem voluptatum explicabo ipsum quae, dolorum, laudantium doloribus a, illum saepe sapiente accusantium dicta reiciendis? Amet iure porro voluptatum error fugit odit voluptas?</p>
+        </main>
+
+        <script src="../js/script.js"></script>
     </body>
 
     </html>
-
 <?php
 } else {
     header("location:login.php");

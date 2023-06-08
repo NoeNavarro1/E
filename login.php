@@ -34,8 +34,8 @@ if ($_POST){
     <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preload" href="css/normalize.css">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="preload" href="css/login.css" as="style">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="preload" href="http://localhost/ecovida/css/login.css" as="style">
+    <link rel="stylesheet" href="http://localhost/ecovida/css/login.css">
     <title>Login</title>
     
 <body>
@@ -62,7 +62,7 @@ if ($_POST){
                             $(".alert").fadeTo(1500, 0).slideDown(1000, function(){
                                 $(this).remove();
                             });
-                        }, 3000);//3 segundos desaparece
+                        }, 2000);//2 segundos desaparece
                     </script>
                     <div class="campo">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="30"

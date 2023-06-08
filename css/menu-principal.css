@@ -1,98 +1,177 @@
-/*Globales*/
 :root{
-    --secundario: #852b9c;
     --primario: #ffffff;
+    --secundario: #852b9c;
+    --hover: #0d97b6;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family:'Krub', sans-serif;
 }
 
 html {
+    margin: auto;
     font-size: 62.5%;
     box-sizing: border-box;
-    font-family: 'Krub', sans-serif;
 }
 
 *,
 *:before,
 *:after {
     box-sizing: inherit;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    list-style: none;
 }
 
-body {
+body{
     font-size: 16px;
-    overflow:hidden;
-    /* background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--primario) 100%); */
-
+    margin-left: 8rem;
+    margin-top: 8rem;
+    transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
-/*Menu-principal*/
-.main{
+main{
+    padding: 2rem;
+}
+
+header{
     width: 100%;
-    height: 100vh;
+    height: 80px;
+    background: #f5f5f5;
     display: flex;
-    text-align: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 200;
 }
 
-.menu{
-    width: 15%;
-    background-color:var(--secundario);
+.icon__menu{
+    width: 5rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(1rem);
 }
-#logo{
-    color:var(--primario);
-    font-size: 30px;
-    letter-spacing: 4px;
-    padding: 15px;
-    background-color: #000;
+
+.icon__menu i{
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
 }
-.menu a {
-text-decoration: none;
-color: var(--primario);
-font-size: 18px;
-letter-spacing: 2px;
-display: list-item;
-padding: 20px;
-border-top: 1px solid var(--primario);
-border-bottom: 1px solid var(--primario);
+
+.menu__side{
+    width: 8rem;
+    height: 100%;
+    background: var(--secundario);
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: var(--primario);
+    font-size: 1.8rem;
+    z-index: 300;
+    overflow: hidden;
+    overflow-y: scroll;
+    border-right: 2rem solid var(--secundario);
+    transition: all 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
-.menu a:hover {
-    background-color:var(--secundario);
-    transition: 2s;
-    letter-spacing: .1rem;
+
+/*Ocultar scroll para chrome, safari y opera*/
+.menu__side::-webkit-scrollbar{
+    display: none;
+}
+
+/*Ocultar scroll para IE, Edge y Firefox*/
+.menu__side{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+.name__page{
+    padding: 2rem 3rem;
+    display: flex;
+    align-items:flex-start;
+    margin-top: 1rem;
+}
+
+.name__page img{
+    width: 3rem;
+    margin-right: 2rem;
+}
+
+.options__menu{
+    padding: 2rem 3rem;
+    position: absolute;
+    top: 8rem;
+}
+
+.options__menu a{
+    color: var(--primario);
+    cursor: default;
+    display: block;
+    position: relative;
+    transition: color 300ms;
+    text-decoration: none;
+}
+
+.options__menu a:hover{
+    color: var(--hover);
     text-transform: uppercase;
 }
 
-/*Body*/
-.body img{
+.options__menu .option{
+    padding: 2rem 0;
     display: flex;
-    flex-direction: column;
-    align-items:flex-start;
-    justify-content: flex-start;
-    width: 70%;
+    align-items: center;
+    position: relative;
 }
 
-.body .ubicacion{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    margin-left: 11rem;
+.options__menu .option i{
+    width: 2rem;
+    margin-right: 2rem;
+    cursor: pointer;
 }
 
-.body svg{
-    background-color: #ae1d69;
-    border-radius: 50%;
-    margin-right: 4rem;
+.options__menu .option h4{
+    font-weight: 300;
+    cursor: pointer;
 }
 
-.body p,
-.body span{
-    font-size: 2rem;
-    font-weight: 700;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+a.selected{
+    color: #fff;
+}
 
+.selected:before{
+    content: '';
+    width: .3rem;
+    height: 80%;
+    background: white;
+    position: absolute;
+    top: 10%;
+    left: -3rem;
 }
 
 
+/*Clases para usar en JavaScript*/
+
+.body_move{
+    margin-left: 25rem;
+}
+
+.menu__side_move{
+    width: 25rem;
+}
+
+
+@media screen and (max-width: 760px){
+    .body_move{
+        margin-left: 0px;
+    }
+
+    .menu__side_move{
+        width: 80px;
+        left: -80px;
+    }
+}
