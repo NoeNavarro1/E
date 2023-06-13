@@ -16,6 +16,7 @@ if (isset($_SESSION['usuario'])) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/cbd3c2f268.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="preload" href="http://localhost/ecovida/css/normalize.css" type="text/css" as="style">
         <link rel="stylesheet" href="http://localhost/ecovida/css/normalize.css" type="text/css">
         <link rel="preload" href="http://localhost/ecovida/css/menu-principal.css" type="text/css" as="style">
@@ -24,18 +25,23 @@ if (isset($_SESSION['usuario'])) {
     </head>
 
     <body id="body">
-
         <header>
             <div class="icon__menu">
                 <i class="fas fa-bars" id="btn_open"></i>
+                <h1>PRINCIPAL</h1>
             </div>
         </header>
 
         <div class="menu__side" id="menu_side">
 
             <div class="name__page">
-            <img src="../img/avatar.png"> 
-            <h3><?php echo "<p>Bienvenido " . $_SESSION['usuario'] . "</p>" ?></h3>
+                <img src="../img/ecovida_pequeño.png">
+                <h3>Ecovida</h3>
+            </div>
+
+            <div class="name__page">
+                <img src="../img/avatar.png">
+                <h3><?php echo "<p>Bienvenido " . $_SESSION['usuario'] . "</p>" ?></h3>
             </div>
 
             <div class="options__menu">
@@ -49,28 +55,28 @@ if (isset($_SESSION['usuario'])) {
 
                 <a href="#">
                     <div class="option">
-                    <i class="fa-solid fa-calendar"></i>
+                        <i class="fa-solid fa-calendar"></i>
                         <h4>Calendario</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                    <i class="fa-solid fa-notes-medical"></i>
+                        <i class="fa-solid fa-notes-medical"></i>
                         <h4>Pacientes</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                    <i class="fa-solid fa-user-doctor"></i>
+                        <i class="fa-solid fa-user-doctor"></i>
                         <h4>Médico</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                    <i class="fa-solid fa-eye-dropper"></i>
+                        <i class="fa-solid fa-eye-dropper"></i>
                         <h4>Estudios</h4>
                     </div>
                 </a>
@@ -84,44 +90,43 @@ if (isset($_SESSION['usuario'])) {
 
                 <a href="#">
                     <div class="option">
-                    <i class="fa-solid fa-microscope"></i>
+                        <i class="fa-solid fa-microscope"></i>
                         <h4>Examenes</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                    <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-user"></i>
                         <h4>Usuario</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
+                        <i class="fa-solid fa-clock-rotate-left"></i>
                         <h4>Historial</h4>
                     </div>
                 </a>
 
-                <a href="../salir.php">
-                    <div class="option">
-                    <i class="fa-solid fa-door-closed"></i>
+                <a href="../salir.php" onclick="salir(event)">
+                    <div class="option" >
+                        <i class="fa-solid fa-door-closed"></i>
                         <h4>Cerrar sesión</h4>
                     </div>
                 </a>
 
             </div>
 
-        </div>
+        </div><!--Fin del menu lateral-->
 
         <main>
-            <h1>Title Exemple</h1><br>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam sapiente cumque dicta animi explicabo sequi. Ex amet et, dolor eligendi commodi consectetur quo voluptatibus, cum nemo porro veniam at blanditiis?</p> <br>
 
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident adipisci beatae impedit quia, deleniti quasi sequi iusto exercitationem nihil nulla, laboriosam dolore corrupti fuga officiis? Odit a mollitia id magnam amet delectus quia blanditiis reprehenderit explicabo eveniet! Rem voluptatum explicabo ipsum quae, dolorum, laudantium doloribus a, illum saepe sapiente accusantium dicta reiciendis? Amet iure porro voluptatum error fugit odit voluptas?</p>
         </main>
 
+        <!--Scripts JS-->
         <script src="../js/script.js"></script>
+        <script src="../js/login.js"></script>
     </body>
 
     </html>

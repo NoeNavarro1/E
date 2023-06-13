@@ -25,6 +25,10 @@ body {
 
 }
 
+.titulo{
+    font-size: 1.5rem;
+}
+
 section {
     width: 100%;
     display: flex;
