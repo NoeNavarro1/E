@@ -61,15 +61,16 @@ include "../Ecovida/Controller/controller_Login_select.php";
                         </svg>
                         <label for="sucursal">Selecciona tu sucursal:</label>
                         <select name="sucursal" id="sucursal">
+                            <!--Muestra los datos de la columa sucursal de la tabla usuario-->
                             <?php
                             $sucursalesUnicas = array_unique($sucursales); // Eliminar sucursales duplicadas
                             foreach ($sucursalesUnicas as $s) { ?>
                                 <option value="<?php echo $s; ?>"><?php echo $s; ?></option>
-                            <?php }?>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="boton">
-                        <input id="btn-login" class="enviar" type="submit" value="INICIAR SESION" onclick="login(event)">
+                        <input id="btn-login" class="enviar" type="submit" value="INICIAR SESION">
                     </div>
                 </div>
             </form>
@@ -77,9 +78,7 @@ include "../Ecovida/Controller/controller_Login_select.php";
     </section>
 
     <!--Scrips de JS-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="http://localhost/ecovida/assets/js/bootstrap.min.js"></script>
-    <script src="../js/login.js"></script>
     </head>
 </body>
 
