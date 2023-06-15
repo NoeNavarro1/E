@@ -1,58 +1,10 @@
-<!--Validacion de Usuario y contraseña en la base de datos-->
-<?php
-if ($_POST) {
-    session_start();
-    require('Model/Conexion.php');
-    $u = $_POST['usuario'];
-    $c = $_POST['contraseña'];
-    $s = $_POST['sucursal'];
-    $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $query = $conexion->prepare("SELECT * FROM usuarios WHERE Usuario = :u AND Contraseña = :c");
-    $query->bindParam(":u", $u);
-    $query->bindParam(":c", $c);
-    $query->execute();
-    $usuario = $query->fetch(PDO::FETCH_ASSOC);
-    if ($usuario) {
-        $_SESSION['usuario'] = $usuario["Usuario"];
-        $m_exito = 'Bienvenido ' . $_SESSION['usuario'];
-    } else {
-        $m_error = 'Usuario o contraseña incorrecta';
-    }
-}
-?>
-
-<!--Se concatena el mensaje de la variable y se cierra corchetes de php -->
-<script>
-    <?php if (isset($m_exito)) : ?>
-        setTimeout(function() {
-            Swal.fire({
-                position: 'top',
-                icon: 'success',
-                title: 'Usuario correcto',
-                text: '<?= $m_exito ?>',
-                footer: '',
-            }).then(function() {
-                window.location.href = "View/V_menuPrincipal.php";
-            });
-        }, 100);
-    <?php endif; ?>
-    <?php if (isset($m_error)) : ?>
-        setTimeout(function() {
-            Swal.fire({
-                position: 'top',
-                icon: 'error',
-                title: 'Usuario y/o contraseña incorrecta',
-                showConfirmButton: false,
-                timer: 2500,
-
-            });
-        }, 100);
-    <?php endif; ?>
-</script>
-<!--Fin del scrip-->
-
 <!DOCTYPE html>
 <html lang="en">
+
+<?php
+include "../Ecovida/Controller/controller_Login.php";
+include "../Ecovida/Controller/controller_Login_select.php";
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -107,16 +59,17 @@ if ($_POST) {
                             <path d="M19 21l0 -10.15" />
                             <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
                         </svg>
-                        <label for="">Selecciona tu sucursal:</label>
-                        <select name="sucursal" class="inputs" name="" id="">
-                            <option value="">Huamantla</option>
-                            <option value="">Cuapiaxtla</option>
-                            <option value="">Grajales</option>
+                        <label for="sucursal">Selecciona tu sucursal:</label>
+                        <select name="sucursal" id="sucursal">
+                            <?php
+                            $sucursalesUnicas = array_unique($sucursales); // Eliminar sucursales duplicadas
+                            foreach ($sucursalesUnicas as $s) { ?>
+                                <option value="<?php echo $s; ?>"><?php echo $s; ?></option>
+                            <?php }?>
                         </select>
                     </div>
                     <div class="boton">
                         <input id="btn-login" class="enviar" type="submit" value="INICIAR SESION" onclick="login(event)">
-
                     </div>
                 </div>
             </form>

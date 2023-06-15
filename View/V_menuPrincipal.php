@@ -48,70 +48,70 @@ if (isset($_SESSION['usuario'])) {
 
                 <a href="#" class="selected">
                     <div class="option">
-                        <i class="fas fa-home" title="Inicio"></i>
+                        <i class="fas fa-home" title="Principal"></i>
                         <h4>Principal</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                        <i class="fa-solid fa-calendar"></i>
+                        <i class="fa-solid fa-calendar" title="Calendario"></i>
                         <h4>Calendario</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                        <i class="fa-solid fa-notes-medical"></i>
+                        <i class="fa-solid fa-notes-medical" title="Pacientes"></i>
                         <h4>Pacientes</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                        <i class="fa-solid fa-user-doctor"></i>
+                        <i class="fa-solid fa-user-doctor" title="Médico"></i>
                         <h4>Médico</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                        <i class="fa-solid fa-eye-dropper"></i>
+                        <i class="fa-solid fa-eye-dropper" title="Estudios"></i>
                         <h4>Estudios</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                        <i class="far fa-address-card" title="Nosotros"></i>
+                        <i class="far fa-address-card" title="Resultados"></i>
                         <h4>Resultados</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                        <i class="fa-solid fa-microscope"></i>
+                        <i class="fa-solid fa-microscope" title="Examenes"></i>
                         <h4>Examenes</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-user" title="Usuario"></i>
                         <h4>Usuario</h4>
                     </div>
                 </a>
 
                 <a href="#">
                     <div class="option">
-                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <i class="fa-solid fa-clock-rotate-left" title="Historial"></i>
                         <h4>Historial</h4>
                     </div>
                 </a>
 
                 <a href="../salir.php" onclick="salir(event)">
                     <div class="option" >
-                        <i class="fa-solid fa-door-closed"></i>
+                        <i class="fa-solid fa-door-closed" title="Cerrar sesión"></i>
                         <h4>Cerrar sesión</h4>
                     </div>
                 </a>
