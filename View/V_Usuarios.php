@@ -28,7 +28,7 @@ if (isset($_SESSION['usuario'])) {
         <header>
             <div class="icon__menu">
                 <i class="fas fa-bars" id="btn_open"></i>
-                <h1>PRINCIPAL</h1>
+                <h1>Usuarios</h1>
             </div>
         </header>
 
@@ -46,7 +46,7 @@ if (isset($_SESSION['usuario'])) {
 
             <div class="options__menu">
 
-                <a href="#" class="selected">
+                <a href="../View/V_menuPrincipal.php" class="selected">
                     <div class="option">
                         <i class="fas fa-home" title="Principal"></i>
                         <h4>Principal</h4>
@@ -95,7 +95,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </a>
 
-                <a href="../View/V_Usuarios.php">
+                <a href="#">
                     <div class="option">
                         <i class="fa-solid fa-user" title="Usuario"></i>
                         <h4>Usuario</h4>
