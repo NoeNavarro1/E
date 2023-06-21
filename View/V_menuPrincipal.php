@@ -1,7 +1,9 @@
 <?php
+require "../Controller/principal/Controller_Resumen.php";
 session_start();
 if (isset($_SESSION['usuario'])) {
 ?>
+
 
     <!DOCTYPE html>
     <html lang="en">
@@ -21,6 +23,8 @@ if (isset($_SESSION['usuario'])) {
         <link rel="stylesheet" href="http://localhost/ecovida/css/normalize.css" type="text/css">
         <link rel="preload" href="http://localhost/ecovida/css/menu_lateral.css" type="text/css" as="style">
         <link rel="stylesheet" href="http://localhost/ecovida/css/menu_lateral.css" type="text/css">
+        <link rel="preload" href="http://localhost/ecovida/css/principal.css" type="text/css" as="style">
+        <link rel="stylesheet" href="http://localhost/ecovida/css/principal.css" type="text/css">
         <title>Menu Principal</title>
     </head>
 
@@ -110,7 +114,7 @@ if (isset($_SESSION['usuario'])) {
                 </a>
 
                 <a href="../salir.php" onclick="salir(event)">
-                    <div class="option" >
+                    <div class="option">
                         <i class="fa-solid fa-door-closed" title="Cerrar sesión"></i>
                         <h4>Cerrar sesión</h4>
                     </div>
@@ -121,7 +125,66 @@ if (isset($_SESSION['usuario'])) {
         </div><!--Fin del menu lateral-->
 
         <main>
-
+            <div class="resumen">
+                <div class="cartaR">
+                    <h2>Resumen</h2>
+                    <div class="contenedor">
+                        <div class="usuarios">
+                            <p class="total"><?php echo $totalUsuarios ?> </p>
+                            <h3>Usuarios</h3>
+                        </div>
+                        <div class="pacientes">
+                            <p class="total"><?php echo $totalPacientes ?></p>
+                            <h3>Pacientes</h3>
+                        </div>
+                        <div class="doctores">
+                            <p class="total">3</p>
+                            <h3>Doctores</h3>
+                        </div>
+                    </div>
+                </div>
+            </div><!--Resumen-->
+            <div class="cartas">
+            <section class="carta">
+                <h2>Pacientes</h2>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <div class="info">
+                    <a href="#">Más Informacion</a>
+                </div>
+            </section>
+            <section class="carta">
+                <h2>Doctores</h2>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p> 
+                <div class="info">
+                    <a href="#">Más Informacion</a>
+                </div>
+            </section>
+            <section class="carta">
+                <h2>Usuarios</h2>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <p>Oskar</p>
+                <div class="info">
+                    <a href="#">Más Informacion</a>
+                </div>
+            </section>
+            </div>
         </main>
 
         <!--Scripts JS-->
