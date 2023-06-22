@@ -181,7 +181,7 @@ if (isset($_SESSION['usuario'])) {
                 <p>Oskar</p>
                 <p>Oskar</p>
                 <div class="info">
-                    <a href="#">Más Informacion</a>
+                    <a href="../View/V_Usuarios.php">Más Informacion</a>
                 </div>
             </section>
             </div>
@@ -190,6 +190,7 @@ if (isset($_SESSION['usuario'])) {
         <!--Scripts JS-->
         <script src="../js/script.js"></script>
         <script src="../js/login.js"></script>
+        <script src="../js/principal.js"></script>
     </body>
 
     </html>
