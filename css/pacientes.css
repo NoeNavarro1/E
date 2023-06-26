@@ -1,0 +1,46 @@
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.modal-title {
+    font-size: 24px; /* Tamaño de letra para el título del modal */
+}
+
+.modal-body {
+    font-size: 18px; /* Tamaño de letra para el contenido del modal */
+}
+
+.modal-footer {
+    font-size: 16px; /* Tamaño de letra para el pie de página del modal */
+}
+.btn-modal {
+    margin-right: 10px;
+    font-size: 12px; /* Tamaño de letra para los botones del modal */
+}
+.input-grande,
+select {
+  font-size: 16px;
+  padding: 12px;
+}
+
+.float-end
+{
+    font-size: 12px;
+}
+.btn-sm
+{
+    font-size: 12px;
+}
+
+@media (max-width: 480px){
+    .tabla{
+        width: auto;
+    }
+
+    .fecha{
+
+        display: none;
+    }
+}

@@ -1,5 +1,5 @@
 <?php
-require "../Controller/principal/Controller_Resumen.php";
+require "../Controller/principal/Controller_resumen.php";
 session_start();
 if (isset($_SESSION['usuario'])) {
 ?>
@@ -64,7 +64,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </a>
 
-                <a href="#">
+                <a href="../View/pacientes_vistas/V_pacientes.php">
                     <div class="option">
                         <i class="fa-solid fa-notes-medical" title="Pacientes"></i>
                         <h4>Pacientes</h4>
@@ -102,7 +102,7 @@ if (isset($_SESSION['usuario'])) {
                 <a href="../View/V_Usuarios.php">
                     <div class="option">
                         <i class="fa-solid fa-user" title="Usuario"></i>
-                        <h4>Usuario</h4>
+                        <h4>Usuarios</h4>
                     </div>
                 </a>
 

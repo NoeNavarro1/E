@@ -13,6 +13,7 @@ if ($_POST) {
         $m_error = 'Debe completar todos los campos.';
     } else {
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //hacemos la consulta en sql
         $query = $conexion->prepare("SELECT * FROM usuarios WHERE Usuario = :u AND Contraseña = :c AND Sucursal = :s");
         $query->bindParam(":u", $u);
         $query->bindParam(":c", $c);
@@ -29,7 +30,6 @@ if ($_POST) {
     }
 }
 ?>
-
 
 <!--Se concatena el mensaje de la variable y se cierra corchetes de php -->
 <script>

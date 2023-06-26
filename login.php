@@ -27,7 +27,7 @@ include "../Ecovida/Controller/login/controller_Login_select.php";
             <div class="imagen">
                 <img src="img/ecovida.jpg">
             </div>
-            <form id="login-form" method="POST" action="login.php">
+            <form  method="POST" action="login.php">
                 <div class="formulario">
                     <h1>Login</h1>
                     <hr>
@@ -38,7 +38,7 @@ include "../Ecovida/Controller/login/controller_Login_select.php";
                             <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                         </svg>
                         <label for="usuario">Usuario:</label>
-                        <input id="user" type="text" name="usuario" class="inputs" placeholder="Usuario" required>
+                        <input id="user" type="text" name="usuario" class="inputs" placeholder="Usuario" required autocomplete="off">
                     </div>
                     <div class="campo">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lock" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -48,7 +48,7 @@ include "../Ecovida/Controller/login/controller_Login_select.php";
                             <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
                         </svg>
                         <label for="contraseña">Contraseña:</label>
-                        <input id="pass" type="password" name="contraseña" class="inputs" placeholder="Contraseña" required>
+                        <input id="pass" type="password" name="contraseña" class="inputs" placeholder="Contraseña" required autocomplete="off">
                     </div>
                     <div class="campo">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-store" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
