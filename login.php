@@ -27,7 +27,7 @@ include "../Ecovida/Controller/login/controller_Login_select.php";
             <div class="imagen">
                 <img src="img/ecovida.jpg">
             </div>
-            <form  method="POST" action="login.php">
+            <form id="formulario" method="POST" action="login.php">
                 <div class="formulario">
                     <h1>Login</h1>
                     <hr>

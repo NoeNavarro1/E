@@ -64,7 +64,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </a>
 
-                <a href="../View/pacientes_vistas/V_pacientes.php">
+                <a href="../View/pacientes/V_pacientes.php">
                     <div class="option">
                         <i class="fa-solid fa-notes-medical" title="Pacientes"></i>
                         <h4>Pacientes</h4>
@@ -121,7 +121,6 @@ if (isset($_SESSION['usuario'])) {
                 </a>
 
             </div>
-
         </div><!--Fin del menu lateral-->
 
         <main>
@@ -155,7 +154,7 @@ if (isset($_SESSION['usuario'])) {
                 <p>Oskar</p>
                 <p>Oskar</p>
                 <div class="info">
-                    <a href="#">Más Informacion</a>
+                    <a href="../View/pacientes/V_pacientes.php">Más Informacion</a>
                 </div>
             </section>
             <section class="carta">
