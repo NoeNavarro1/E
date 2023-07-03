@@ -6,7 +6,7 @@ if ($_POST) {
     session_start();
     require('Model/Conexion.php');
     $u = $_POST['usuario'];
-    $c = $_POST['contraseña'];
+    $c = $_POST['clave'];
     $s = $_POST['sucursal'];
 
     if (empty($u) || empty($c) || empty($s)) {
@@ -14,7 +14,7 @@ if ($_POST) {
     } else {
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //hacemos la consulta en sql
-        $query = $conexion->prepare("SELECT * FROM usuarios WHERE Usuario = :u AND Contraseña = :c AND Sucursal = :s");
+        $query = $conexion->prepare("SELECT * FROM usuarios WHERE usuario = :u AND clave = :c AND sucursal = :s");
         $query->bindParam(":u", $u);
         $query->bindParam(":c", $c);
         $query->bindParam(":s", $s);
@@ -22,13 +22,14 @@ if ($_POST) {
         $usuario = $query->fetch(PDO::FETCH_ASSOC);
 
         if ($usuario) {
-            $_SESSION['usuario'] = $usuario["Usuario"];
+            $_SESSION['usuario'] = $usuario["usuario"];
             $m_exito = 'Bienvenido ' . $_SESSION['usuario'];
         } else {
             $m_error = 'Credenciales incorrectas.';
         }
     }
 }
+
 ?>
 
 <!--Se concatena el mensaje de la variable y se cierra corchetes de php -->
@@ -46,6 +47,7 @@ if ($_POST) {
             });
         }, 100);
     <?php endif; ?>
+
     <?php if (isset($m_error)) : ?>
         setTimeout(function() {
             Swal.fire({

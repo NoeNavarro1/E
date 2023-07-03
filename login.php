@@ -3,7 +3,6 @@
 
 <?php
 include "../Ecovida/Controller/login/controller_Login.php";
-include "../Ecovida/Controller/login/controller_Login_select.php";
 ?>
 
 <head>
@@ -47,8 +46,8 @@ include "../Ecovida/Controller/login/controller_Login_select.php";
                             <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" />
                             <path d="M8 11v-4a4 4 0 1 1 8 0v4" />
                         </svg>
-                        <label for="contraseña">Contraseña:</label>
-                        <input id="pass" type="password" name="contraseña" class="inputs" placeholder="Contraseña" required autocomplete="off">
+                        <label for="clave">Contraseña:</label>
+                        <input id="pass" type="password" name="clave" class="inputs" placeholder="Contraseña" required autocomplete="off">
                     </div>
                     <div class="campo">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-building-store" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -79,7 +78,6 @@ include "../Ecovida/Controller/login/controller_Login_select.php";
 
     <!--Scrips de JS-->
     <script src="js/login.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
     </head>
 </body>
 

@@ -187,7 +187,7 @@ if (isset($_SESSION['usuario'])) {
         </main>
 
         <!--Scripts JS-->
-        <script src="../js/script.js"></script>
+        <script src="../js/menu_lateral.js"></script>
         <script src="../js/login.js"></script>
         <script src="../js/principal.js"></script>
     </body>
@@ -195,6 +195,6 @@ if (isset($_SESSION['usuario'])) {
     </html>
 <?php
 } else {
-    header("location:login.php");
+    header("location:../login.php");
 }
 ?>

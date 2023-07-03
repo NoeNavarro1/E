@@ -22,6 +22,8 @@ if (isset($_SESSION['usuario'])) {
         <link rel="stylesheet" href="http://localhost/ecovida/css/normalize.css" type="text/css">
         <link rel="preload" href="http://localhost/ecovida/css/menu_lateral.css" type="text/css" as="style">
         <link rel="stylesheet" href="http://localhost/ecovida/css/menu_lateral.css" type="text/css">
+        <link rel="preload" href="http://localhost/ecovida/css/usuarios.css" type="text/css" as="style">
+        <link rel="stylesheet" href="http://localhost/ecovida/css/usuarios.css" type="text/css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
@@ -32,7 +34,7 @@ if (isset($_SESSION['usuario'])) {
         <header>
             <div class="icon__menu">
                 <i class="fas fa-bars" id="btn_open"></i>
-                <h1>PACIENTES</h1>
+                <h1>Usuarios</h1>
             </div>
         </header>
 
@@ -64,7 +66,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </a>
 
-                <a href="V_pacientes.php">
+                <a href="../pacientes/V_pacientes.php">
                     <div class="option">
                         <i class="fa-solid fa-notes-medical" title="Pacientes"></i>
                         <h4>Pacientes</h4>
@@ -99,7 +101,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </a>
 
-                <a href="../usuarios/V_usuarios.php">
+                <a href="V_Usuarios.php">
                     <div class="option">
                         <i class="fa-solid fa-user" title="Usuario"></i>
                         <h4>Usuarios</h4>
@@ -124,7 +126,7 @@ if (isset($_SESSION['usuario'])) {
         </div><!--Fin del menu lateral-->
 
         <div class="container fondo">
-            <h1 class="text-center">Pacientes</h1>
+            <h1 class="text-center">Usuarios</h1>
             <div class="row">
                 <div class="col-2 offset-10">
                     <div class="text-center">
@@ -142,14 +144,16 @@ if (isset($_SESSION['usuario'])) {
                     <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Usuario</th>
                             <th>Nombre</th>
                             <th>Apellidos</th>
-                            <th>Fecha de Nacimiento</th>
+                            <th>Fecha de nacimiento</th>
+                            <th>Grado de estudio</th>
                             <th>Telefono</th>
-                            <th>Email</th>
-                            <th>Empresa</th>
-                            <th>Localidad</th>
-                            <th>Fecha Creación</th>
+                            <th>Genero</th>
+                            <th>Sucursal</th>
+                            <th>Cargo</th>
+                            <th>Clave o contraseña</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
                         </tr>
@@ -161,46 +165,93 @@ if (isset($_SESSION['usuario'])) {
         <!--Tiene un atributo id con el valor "modalUsuario" que se utiliza para identificarla en el código JavaScript-->
         <div class="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog"> <!--definen la estructura interna de la ventana modal-->
-                <div class="modal-content"> <!--definen la estructura interna de la ventana modal-->
+                <div class="modal-content contenedor"> <!--definen la estructura interna de la ventana modal-->
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Usuario</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="V_pacientes.php" id="formulario" method="POST">
                         <div class="moda-content">
-                            <div class="modal-body"> <!--Dentro de modal-body se definen etiquetas <label> y campos de entrada <input>-->
-                                <label for="nombre">Ingrese el nombre</label>
-                                <input type="text" name="nombre" id="nombre" class="form-control" autocomplete="off">
-                                <br>
+                            <div class="modal-body contenedor-campos"> <!--Dentro de modal-body se definen etiquetas <label> y campos de entrada <input>-->
 
-                                <label for="apellidos">Ingrese los apellidos</label>
-                                <input type="text" name="apellidos" id="apellidos" class="form-control" autocomplete="off">
-                                <br>
+                                <div class="campo">
+                                    <label for="nombre">Ingrese el Usuario:</label>
+                                    <input type="text" name="usuario" id="usuario" class="form-control" autocomplete="off">
+                                </div>
 
-                                <label for="fecha_nacimiento">Ingrese la fecha de nacimiento</label>
-                                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" autocomplete="off">
-                                <br>
+                                <div class="campo">
+                                    <label for="nombre">Ingrese el nombre:</label>
+                                    <input type="text" name="nombre" id="nombre" class="form-control" autocomplete="off">
+                                </div>
 
-                                <label for="telefono">Ingrese el telefono</label>
-                                <input type="text" name="telefono" id="telefono" class="form-control" autocomplete="off">
-                                <br>
+                                <div class="campo">
+                                    <label for="apellidos">Ingrese los apellidos:</label>
+                                    <input type="text" name="apellidos" id="apellidos" class="form-control" autocomplete="off">
+                                </div>
 
-                                <label for="email">Ingrese el correo</label>
-                                <input type="email" name="email" id="email" class="form-control" autocomplete="off">
-                                <br>
+                                <div class="campo">
+                                    <label for="apellidos">Ingrese la fecha de nacimiento:</label>
+                                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" autocomplete="off">
+                                </div>
 
-                                <label for="empresa">Seleccione la empresa</label>
-                                <select name="empresa" id="empresa" class="form-control">
-                                    <option value="DIF">DIF</option>
-                                    <option value="Publico">Publico en general</option>
-                                </select>
+                                <div class="campo">
+                                    <label for="apellidos">Ingrese el grado de estudio:</label>
+                                    <input type="text" name="grado_estudio" id="grado_estudio" class="form-control" autocomplete="off">
+                                </div>
 
-                                <label for="localidad">Seleccione la localidad</label>
-                                <select name="localidad" id="localidad" class="form-control">
-                                    <option value="Huamantla">Huamantla</option>
-                                    <option value="Cuapiaxtla">Cuapiaxtla</option>
-                                    <option value="Grajales">Grajales</option>
-                                </select>
+                                <div class="campo">
+                                    <label for="apellidos">Ingrese el telefono:</label>
+                                    <input type="text" name="telefono" id="telefono" class="form-control" autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="genero">Selecciona el genero:</label>
+                                    <select name="genero" id="genero" class="form-control" required>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                    </select>
+                                </div>
+
+                                <div class="campo">
+                                    <label for="sucursal">Selecciona tu sucursal:</label>
+                                    <select name="sucursal" id="sucursal" class="form-control" required>
+                                        <option value="Huamantla">Huamantla</option>
+                                        <option value="Cuapiaxtla">Cuapiaxtla</option>
+                                        <option value="Grajales">Grajales</option>
+                                    </select>
+                                </div>
+
+                                <div class="campo">
+                                    <label for="cargo">Selecciona el cargo:</label>
+                                    <select name="cargo" id="cargo" class="form-control" required>
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Recepionista">Recepcionista</option>
+                                    </select>
+                                </div>
+
+                                <div class="campo container_password">
+                                    <label for="clave">Escriba la contraseña:</label>
+                                    <input type="password" name="clave" id="clave" class="form-control pass" autocomplete="off" require>
+                                    <img src="../../img/eye_close.png" class="icon" id="eye">
+
+                                    <script>
+                                        // Agregar el event listener fuera de la función mostrarContraseña
+                                        var eye = document.getElementById('eye');
+                                        var clave = document.getElementById('clave');
+
+                                        eye.addEventListener("click", function() {
+                                            if (clave.type === "password") {
+                                                clave.type = "text";
+                                                eye.src = "../../img/eye.png";
+                                            } else {
+                                                clave.type = "password";
+                                                eye.src = "../../img/eye_close.png";
+                                            }
+                                        });
+                                    </script>
+
+                                </div>
+
                             </div>
 
                             <div class="modal-footer"> <!--se incluyen campos ocultos-->
@@ -221,8 +272,8 @@ if (isset($_SESSION['usuario'])) {
         <script src="https://kit.fontawesome.com/cbd3c2f268.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../../js/menu_lateral.js"></script>
-        <script src="../../js/pacientes.js"></script>
-        
+        <script src="../../js/usuarios.js"></script>
+
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
