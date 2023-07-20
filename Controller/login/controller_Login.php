@@ -6,7 +6,7 @@ if ($_POST) {
     session_start();
     require('Model/Conexion.php');
     $u = $_POST['usuario'];
-    $c = $_POST['clave'];
+    $c = $_POST['pass'];
     $s = $_POST['sucursal'];
 
     if (empty($u) || empty($c) || empty($s)) {
@@ -14,14 +14,14 @@ if ($_POST) {
     } else {
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         //hacemos la consulta en sql
-        $query = $conexion->prepare("SELECT * FROM usuarios WHERE usuario = :u AND clave = :c AND sucursal = :s");
+        $query = $conexion->prepare("SELECT * FROM usuarios WHERE usuario = :u AND sucursal = :s");
         $query->bindParam(":u", $u);
-        $query->bindParam(":c", $c);
         $query->bindParam(":s", $s);
         $query->execute();
         $usuario = $query->fetch(PDO::FETCH_ASSOC);
 
-        if ($usuario) {
+        //se hace la verificacion de la contraseña con el hash
+        if ($usuario && password_verify($c, $usuario['clave'])) {
             $_SESSION['usuario'] = $usuario["usuario"];
             $m_exito = 'Bienvenido ' . $_SESSION['usuario'];
         } else {

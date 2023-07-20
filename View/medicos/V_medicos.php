@@ -22,8 +22,8 @@ if (isset($_SESSION['usuario'])) {
         <link rel="stylesheet" href="http://localhost/ecovida/css/normalize.css" type="text/css">
         <link rel="preload" href="http://localhost/ecovida/css/menu_lateral.css" type="text/css" as="style">
         <link rel="stylesheet" href="http://localhost/ecovida/css/menu_lateral.css" type="text/css">
-        <link rel="preload" href="http://localhost/ecovida/css/usuarios.css" type="text/css" as="style">
-        <link rel="stylesheet" href="http://localhost/ecovida/css/usuarios.css" type="text/css">
+        <link rel="preload" href="http://localhost/ecovida/css/medicos.css" type="text/css" as="style">
+        <link rel="stylesheet" href="http://localhost/ecovida/css/medicos.css" type="text/css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
@@ -34,7 +34,7 @@ if (isset($_SESSION['usuario'])) {
         <header>
             <div class="icon__menu">
                 <i class="fas fa-bars" id="btn_open"></i>
-                <h1>Usuarios</h1>
+                <h1>Medicos</h1>
             </div>
         </header>
 
@@ -126,7 +126,7 @@ if (isset($_SESSION['usuario'])) {
         </div><!--Fin del menu lateral-->
 
         <div class="container fondo">
-            <h1 class="text-center">Usuarios</h1>
+            <h1 class="text-center">Medicos</h1>
             <img src="../../img/avatar.png" width="20px">
             <div class="row">
                 <div class="col-2 offset-10">
@@ -141,14 +141,17 @@ if (isset($_SESSION['usuario'])) {
             <br>
             <br>
             <div class="table-responsive">
-                <table id="datos_usuario" class="table table-bordered table-striped">
+                <table id="datos_medico" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Usuario</th>
                             <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Cedula</th>
                             <th>Telefono</th>
-                            <th>Sucursal</th>                                                  
+                            <th>Email</th>
+                            <th>Especialidad</th>
+                            <th>Calle</th>                                                  
                             <th width="20px">Editar</th>
                             <th width="20px">Eliminar</th>
                         </tr>
@@ -162,17 +165,12 @@ if (isset($_SESSION['usuario'])) {
             <div class="modal-dialog"> <!--definen la estructura interna de la ventana modal-->
                 <div class="modal-content contenedor"> <!--definen la estructura interna de la ventana modal-->
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Usuario</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Crear medico</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form action="V_pacientes.php" id="formulario" name="formulario" method="POST">
+                    <form action="V_medicos.php" id="formulario" name="formulario" method="POST">
                         <div class="moda-content">
                             <div class="modal-body contenedor-campos"> <!--Dentro de modal-body se definen etiquetas <label> y campos de entrada <input>-->
-
-                                <div class="campo">
-                                    <label for="nombre">Ingrese el Usuario:</label>
-                                    <input type="text" name="usuario" id="usuario" class="form-control" autocomplete="off">
-                                </div>
 
                                 <div class="campo">
                                     <label for="nombre">Ingrese el nombre(s):</label>
@@ -185,75 +183,35 @@ if (isset($_SESSION['usuario'])) {
                                 </div>
 
                                 <div class="campo">
-                                    <label for="apellidos">Ingrese la fecha de nacimiento:</label>
-                                    <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" autocomplete="off">
+                                    <label for="cedula">Ingrese su la cedula:</label>
+                                    <input type="text" name="cedula" id="cedula" class="form-control" autocomplete="off">
                                 </div>
 
                                 <div class="campo">
-                                    <label for="apellidos">Ingrese el grado de estudio:</label>
-                                    <input type="text" name="grado_estudio" id="grado_estudio" class="form-control" autocomplete="off">
-                                </div>
-
-                                <div class="campo">
-                                    <label for="apellidos">Ingrese el telefono:</label>
+                                    <label for="telefono">Ingrese el telefono:</label>
                                     <input type="text" name="telefono" id="telefono" class="form-control" autocomplete="off">
                                 </div>
 
                                 <div class="campo">
-                                    <label for="genero">Selecciona el genero:</label>
-                                    <select name="genero" id="genero" class="form-control" required>
-                                        <option value="">--Genero--</option>
-                                        <option value="Masculino">Masculino</option>
-                                        <option value="Femenino">Femenino</option>
-                                    </select>
+                                    <label for="email">Ingrese el email:</label>
+                                    <input type="text" name="email" id="email" class="form-control" autocomplete="off">
                                 </div>
 
                                 <div class="campo">
-                                    <label for="sucursal">Selecciona tu sucursal:</label>
-                                    <select name="sucursal" id="sucursal" class="form-control" required>
-                                        <option value="">--Sucursal--</option>
-                                        <option value="Huamantla">Huamantla</option>
-                                        <option value="Cuapiaxtla">Cuapiaxtla</option>
-                                        <option value="Grajales">Grajales</option>
-                                    </select>
+                                    <label for="especialidad">Ingrese la especialidad:</label>
+                                    <input type="text" name="especialidad" id="especialidad" class="form-control" autocomplete="off">
                                 </div>
 
                                 <div class="campo">
-                                    <label for="cargo">Selecciona el cargo:</label>
-                                    <select name="cargo" id="cargo" class="form-control" required>
-                                        <option value="">--Cargo--</option>
-                                        <option value="Administrador">Administrador</option>
-                                        <option value="Recepionista">Recepcionista</option>
-                                    </select>
+                                    <label for="domicilio">Ingrese el domicilio:</label>
+                                    <input type="text" name="domicilio" id="domicilio" class="form-control" autocomplete="off">
                                 </div>
-
-                                <div class="campo container_password">
-                                    <label for="clave">Escriba la contraseña:</label>
-                                    <input type="password" name="clave" id="clave" class="form-control pass" autocomplete="off" require>
-                                    <img src="../../img/eye_close.png" class="icon" id="eye">
-
-                                    <script>
-                                        // Agregar el event listener 
-                                        var eye = document.getElementById('eye');
-                                        var clave = document.getElementById('clave');
-
-                                        eye.addEventListener("click", function() {
-                                            if (clave.type === "password") {
-                                                clave.type = "text";
-                                                eye.src = "../../img/eye.png";
-                                            } else {
-                                                clave.type = "password";
-                                                eye.src = "../../img/eye_close.png";
-                                            }
-                                        });
-                                    </script>
-
-                                </div>
+                                
 
                             </div>
 
                             <div class="modal-footer"> <!--se incluyen campos ocultos-->
-                                <input type="hidden" name="id_usuario" id="id_usuario">
+                                <input type="hidden" name="id_medico" id="id_medico">
                                 <input type="hidden" name="operacion" id="operacion">
                                 <input type="submit" name="action" id="action" class="btn btn-success" value="Crear" onsubmit="return validarPassword()">
                             </div>
@@ -269,7 +227,7 @@ if (isset($_SESSION['usuario'])) {
         <script src="https://kit.fontawesome.com/cbd3c2f268.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../../js/menu_lateral.js"></script>
-        <script src="../../js/usuarios.js"></script>
+        <script src="../../js/medicos.js"></script>
 
 
         <!-- Option 1: Bootstrap Bundle with Popper -->

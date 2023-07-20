@@ -71,7 +71,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </a>
 
-                <a href="#">
+                <a href="../View/medicos/V_medicos.php">
                     <div class="option">
                         <i class="fa-solid fa-user-doctor" title="Médico"></i>
                         <h4>Médico</h4>
@@ -99,7 +99,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </a>
 
-                <a href="../View/V_Usuarios.php">
+                <a href="../View/usuarios/V_usuarios.php">
                     <div class="option">
                         <i class="fa-solid fa-user" title="Usuario"></i>
                         <h4>Usuarios</h4>
@@ -137,52 +137,100 @@ if (isset($_SESSION['usuario'])) {
                             <h3>Pacientes</h3>
                         </div>
                         <div class="doctores">
-                            <p class="total">3</p>
+                            <p class="total"><?php echo $totalMedicos ?></p>
                             <h3>Doctores</h3>
                         </div>
                     </div>
                 </div>
             </div><!--Resumen-->
             <div class="cartas">
-            <section class="carta">
-                <h2>Pacientes</h2>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <div class="info">
-                    <a href="../View/pacientes/V_pacientes.php">Más Informacion</a>
-                </div>
-            </section>
-            <section class="carta">
-                <h2>Doctores</h2>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p> 
-                <div class="info">
-                    <a href="#">Más Informacion</a>
-                </div>
-            </section>
-            <section class="carta">
-                <h2>Usuarios</h2>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <p>Oskar</p>
-                <div class="info">
-                    <a href="../View/V_Usuarios.php">Más Informacion</a>
-                </div>
-            </section>
+                <section class="carta">
+                    <div class="table-responsive">
+                        <table id="datos_usuario" class="table table-bordered table-striped">
+                            <h2>Pacientes</h2>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($datos_pacientes as $paciente) {
+                                    $nombre = $paciente["nombre"];
+                                    $apellidos = $paciente["apellidos"];
+
+                                    echo "<tr>";
+                                    echo "<td>" . $nombre . "</td>";
+                                    echo "<td>" . $apellidos . "</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="info">
+                        <a href="../View/pacientes/V_pacientes.php">Más Informacion</a>
+                    </div>
+                </section>
+                <section class="carta">
+                    <div class="table-responsive">
+                        <table id="datos_usuario" class="table table-bordered table-striped">
+                            <h2>Doctores</h2>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach($datos_medicos as $medico){
+                                    $nombre = $medico["nombre"];
+                                    $apellidos = $medico["apellidos"];
+
+                                    echo "<tr>";
+                                    echo "<td>" . $nombre . "</td>";
+                                    echo "<td>" .  $apellidos."</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="info">
+                        <a href="#">Más Informacion</a>
+                    </div>
+                </section>
+                <section class="carta">
+                    <div class="table-responsive">
+                        <table id="datos_usuario" class="table table-bordered table-striped">
+                            <h2>Usuarios</h2>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                foreach ($datos_usuarios as $paciente) {
+                                    $nombre = $paciente["nombre"];
+                                    $apellidos = $paciente["apellidos"];
+
+                                    echo "<tr>";
+                                    echo "<td>" . $nombre . "</td>";
+                                    echo "<td>" . $apellidos . "</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="info">
+                        <a href="../View/V_Usuarios.php">Más Informacion</a>
+                    </div>
+                </section>
             </div>
         </main>
 

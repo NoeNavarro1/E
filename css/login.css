@@ -138,18 +138,34 @@ form {
     padding: 1.7rem;
     display: flex;
     align-items: center;
-
+    position: relative;
 }
+
+.campo .icono{
+    color:#dfe9f3;
+}
+
+/*Estilos para la contraseña*/
+    .icon{
+        position: absolute;
+        height: 45%;
+        width: 8%;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        opacity: 0.5;
+        cursor: pointer;
+    }
+    
+    .icon:hover{
+        opacity: 0.8;
+    }
 
 .formulario .inputs {
     align-items: center;
     padding: .3rem;
     font-size: 1.7rem;
     width: min(40rem, 100%);
-}
-
-.formulario svg {
-    margin-right: .5rem;
 }
 
 /*Boton*/
@@ -176,3 +192,5 @@ form {
 .boton .enviar:hover {
     background-color: var(--color_boton_hover);
 }
+
+    

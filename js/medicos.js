@@ -1,38 +1,25 @@
-//Funcion para un password mas seguro
-function validarPassword() {
-    var clave = document.getElementById('clave');
-    const decimal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
-
-    if (clave.value.match(decimal)) {
-        return true; // Se permite enviar el formulario si la contraseña es segura
-    } else {
-        Swal.fire('La contraseña debe contener al menos una minúscula, mayúscula, número y un carácter especial, y tener entre 8 y 15 caracteres.');
-        return false; // Se evita enviar el formulario si la contraseña no es segura
-    }
-}
-
 //funcionalidad asociada al botón con el ID "botonCrear"
 $(document).ready(function () {
     $("#botonCrear").click(function () {
         $("#formulario")[0].reset(); // Se realiza un reset del formulario con ID "formulario
-        $(".modal-title").text("Crear usuario"); //Se establece el texto "Crear usuario"
+        $(".modal-title").text("Crear medico"); //Se establece el texto "Crear usuario"
         $("#action").val("Crear"); //se establece el valor "Crear" para el campo  de entrada con el ID "action"
         $("#operacion").val("Crear");  // Se establece el valor "Crear" para el campo de entrada con el ID "operacion"
     })
 
     //Funcionalidad de el propio DataTables para mostrar y filtrar los datos
-    var dataTable = $('#datos_usuario').DataTable({
+    var dataTable = $('#datos_medico').DataTable({
         "processing": true,
         "serverSide": true,
         "order": [],
         "ajax": {
-            url: "../../Controller/usuario/Controller_obtenerRegistros.php",
+            url: "../../Controller/medico/Controller_obtenerRegistros.php",
             type: "POST",
         },
         "columnDefs": [{
-            "targets": [0,2,3,4,5,6], //este targets sirve para los datos que no queremos que se filtren de las columnas
+            "targets": [0,2,3,4,5,6,7,8,9], //este targets sirve para los datos que no queremos que se filtren de las columnas
             "orderable": false
-        }
+        },
         ],
         "language": { //se cambia el lenguaje a español para un mejor ententimiento
             "decimal": "",
@@ -61,26 +48,19 @@ $(document).ready(function () {
     $(document).on("submit", "#formulario", function (event) {
         event.preventDefault();
         //obtenemos los datos del form con .val()
-        var usuario = $("#usuario").val()
         var nombres = $("#nombre").val();
         var apellidos = $("#apellidos").val();
-        var fecha_nacimiento = $("#fecha_nacimiento").val();
-        var grado_estudio = $("#grado_estudio").val();
+        var cedula = $("#cedula").val();
         var telefono = $("#telefono").val();
-        var genero = $("#genero").val();
-        var sucursal = $("#sucursal").val();
-        var cargo = $("#cargo").val();
-        var clave = $("#clave").val();
-        // Validar contraseña usando la función validarPassword
-        if (!validarPassword()) {
-            return false; // No se permite enviar el formulario si la contraseña no es segura
-        }
-        
+        var email = $("#email").val();
+        var especialidad = $("#especialidad").val();
+        var domicilio = $("#domicilio").val();
+
         //solicitud ajax para enviar datos del formulario
         //se verifica que las variables o datos no esten vacios de lo contrario te soltara una alerta
-        if (  telefono != '' && cargo != '') {
+        if (nombres != '' && apellidos != '') {
             $.ajax({
-                url: "../../Controller/usuario/Controller_crearUsuario.php",
+                url: "../../Controller/medico/Controller_CrearMedico.php",
                 method: 'POST',
                 //crea un objeto FormData a partir del formulario actual, lo que permite enviar datos en formato de formulario.
                 data: new FormData(this),
@@ -92,7 +72,7 @@ $(document).ready(function () {
                         icon: 'success',
                         title: data, // Utiliza el contenido de 'data' como título de la alerta
                         showConfirmButton: false,
-                        timer: 3000
+                        timer: 1500
                     });
                     $('#formulario')[0].reset();
                     $('#modalUsuario').modal('hide');
@@ -117,7 +97,7 @@ $(document).ready(function () {
         //recupera el valor del atributo "id" del elemento en el que se hizo clic
         var id_usuario = $(this).attr("id");
         $.ajax({
-            url: '../../Controller/usuario/Controller_obtenerRegistro.php',
+            url: '../../Controller/medico/Controller_obtenerRegistro.php',
             method: 'POST',
             data: {
                 id_usuario: id_usuario
@@ -128,18 +108,15 @@ $(document).ready(function () {
             success: function (data) {
                 //se utilizan para asignar los valores de los campos del formulario dentro del modal con los datos recibidos del servidor.
                 $('#modalUsuario').modal('show');
-                $('#usuario').val(data.usuario);
                 $('#nombre').val(data.nombre);
                 $('#apellidos').val(data.apellidos);
-                $('#fecha_nacimiento').val(data.fecha_nacimiento);
-                $('#grado_estudio').val(data.grado_estudio);
+                $('#cedula').val(data.cedula);
                 $('#telefono').val(data.telefono);
-                $('#genero').val(data.genero);
-                $('#sucursal').val(data.sucursal);
-                $('#cargo').val(data.cargo);
-                $('#clave').val(data.clave);
-                $('.modal-title').text("Editar usuario");
-                $('#id_usuario').val(id_usuario);
+                $('#email').val(data.email);
+                $('#especialidad').val(data.especialidad);
+                $('#domicilio').val(data.domicilio);
+                $('.modal-title').text("Editar medico");
+                $('#id_medico').val(id_medico);
                 $('#action').val("Editar");
                 $('#operacion').val("Editar");
             },
@@ -170,7 +147,7 @@ $(document).ready(function () {
             if (result.isConfirmed) {
                 // Se realiza la solicitud AJAX para borrar el registro
                 $.ajax({
-                    url: '../../Controller/usuario/Controller_borrarUsuario.php',
+                    url: '../../Controller/medico/Controller_borrarMedico.php',
                     method: 'POST',
                     data: {
                         id_usuario: id_usuario
@@ -179,7 +156,7 @@ $(document).ready(function () {
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'Usuario borrado exitosamente',
+                            title: 'Paciente borrado exitosamente',
                             showConfirmButton: false,
                             timer: 1500
                         });
@@ -192,5 +169,28 @@ $(document).ready(function () {
 });
 
 
-
-
+//funcionalidad para cerrar sesión
+function salir(event) {
+    event.preventDefault();
+  
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "Si cierras la sesión, perderás todos los cambios no guardados.",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Cerrar sesión',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Aquí puedes realizar alguna acción adicional antes de redirigir
+        window.location.href = "../../salir.php";
+      }
+    });
+  }
+  
+  
+  
+  
+  

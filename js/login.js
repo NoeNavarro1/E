@@ -1,3 +1,12 @@
+$(document).ready(function(){
+  $('#btn-login').click(function(){
+    $('#formulario')[0].reset();
+    
+  })
+})
+
+  
+
 
 function salir(event) {
   event.preventDefault();

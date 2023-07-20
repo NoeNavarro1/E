@@ -2,31 +2,24 @@
 include('../../Model/Conexion.php');
 include("funciones.php");
 
-
 //se verifica si el valor de la variable $_POST["operacion"] es "Crear"
 if ($_POST["operacion"] == "Crear") {
 
-    //creamos una variabl que almacene el valor de la contraseña cifrada
-    $contraseñaSinCifrar = $_POST["clave"];
-    $contraseñaCifrada = password_hash($contraseñaSinCifrar, PASSWORD_DEFAULT);
 
     //se prepara una consulta SQL para insertar los datos del nuevo usuario en la tabla "usuarios" utilizando los valores proporcionados en el formulario.
     // se utilizan para indicar los valores que serán reemplazados en la consulta.
-    $stmt = $conexion->prepare("INSERT INTO usuarios(usuario, nombre, apellidos, fecha_nacimiento, grado_estudio, telefono, genero, sucursal, cargo, clave) VALUES(:usuario, :nombre, :apellidos, :fecha_nacimiento, :grado_estudio, :telefono, :genero, :sucursal, :cargo, :clave)");
+    $stmt = $conexion->prepare("INSERT INTO medicos(nombre , apellidos, cedula, telefono, email, especialidad, domicilio) VALUES(:nombre, :apellidos, :cedula, :telefono, :email, :especialidad, :domicilio)");
 
     //se pasan los valores correspondientes utilizando un array asociativo
     $resultado = $stmt->execute(
         array(
-            ':usuario' => $_POST["usuario"],
             ':nombre' => $_POST["nombre"],
             ':apellidos' => $_POST["apellidos"],
-            ':fecha_nacimiento' => $_POST["fecha_nacimiento"],
-            ':grado_estudio' => $_POST["grado_estudio"],
+            ':cedula' => $_POST["cedula"],
             ':telefono' => $_POST["telefono"],
-            ':genero' => $_POST["genero"],
-            ':sucursal' => $_POST["sucursal"],
-            ':cargo' => $_POST["cargo"],
-            ':clave' => $contraseñaCifrada,
+            ':email' => $_POST["email"],
+            ':especialidad' => $_POST["especialidad"],
+            ':domicilio' => $_POST["domicilio"],
         )
 
     );
@@ -41,27 +34,20 @@ if ($_POST["operacion"] == "Crear") {
 //se verifica si el valor de la variable $_POST["operacion"] es "Editar"
 if ($_POST["operacion"] == "Editar") {
 
-    //variable para la contraseña cifrada
-    $contraseñaSinCifrar = $_POST['clave'];
-    $contraseñaCifrada = password_hash($contraseñaSinCifrar,PASSWORD_DEFAULT);
-
     //se prepara una consulta SQL para actualizar los datos del usuario en la tabla "usuarios". Se utiliza el método prepare() en la conexión $conexion
-    $stmt = $conexion->prepare("UPDATE usuarios SET usuario=:usuario, nombre=:nombre, apellidos=:apellidos, fecha_nacimiento=:fecha_nacimiento, grado_estudio=:grado_estudio, telefono=:telefono, genero=:genero, sucursal=:sucursal, cargo=:cargo, clave=:clave WHERE id=:id");
+    $stmt = $conexion->prepare("UPDATE medicos SET nombre=:nombre, apellidos=:apellidos, cedula=:cedula, telefono=:telefono, email=:email, especialidad=:especialidad, domicilio=:domicilio WHERE id=:id");
 
     //se pasan los valores correspondientes utilizando un array asociativo
     $resultado = $stmt->execute(
         array(
-            ':usuario' => $_POST["usuario"],
             ':nombre' => $_POST["nombre"],
             ':apellidos' => $_POST["apellidos"],
-            ':fecha_nacimiento' => $_POST["fecha_nacimiento"],
-            ':grado_estudio' => $_POST["grado_estudio"],
+            ':cedula' => $_POST["cedula"],
             ':telefono' => $_POST["telefono"],
-            ':genero' => $_POST["genero"],
-            ':sucursal' => $_POST["sucursal"],
-            ':cargo' => $_POST["cargo"],
-            ':clave' => $contraseñaCifrada,
-            ':id' => $_POST["id_usuario"]
+            ':email' => $_POST["email"],
+            ':especialidad' => $_POST["especialidad"],
+            ':domicilio' => $_POST["domicilio"],
+            ':id' => $_POST["id_medico"]
         )
     );
 

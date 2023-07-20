@@ -4,7 +4,7 @@ include("funciones.php");
 
 $query = "";
 $salida = array();
-$query = "SELECT id, usuario, nombre, telefono, sucursal FROM usuarios "; //Se asigna a $query una consulta SQL que selecciona todos los datos de la tabla "usuarios".
+$query = "SELECT * FROM medicos "; //Se asigna a $query una consulta SQL que selecciona todos los datos de la tabla "usuarios".
 
 if (isset($_POST["search"]["value"])) {
     // Se verifica si se ha enviado una cadena de búsqueda desde una solicitud POST
@@ -41,10 +41,13 @@ foreach ($resultado as $fila) {
     //se agregan los valores de los campos a $sub_array. Finalmente, $sub_array se agrega al arreglo $datos.
     $sub_array = array();
     $sub_array[] = $fila["id"];
-    $sub_array[] = $fila["usuario"];
     $sub_array[] = $fila["nombre"];
+    $sub_array[] = $fila["apellidos"];
+    $sub_array[] = $fila["cedula"];
     $sub_array[] = $fila["telefono"];
-    $sub_array[] = $fila["sucursal"];
+    $sub_array[] = $fila["email"];
+    $sub_array[] = $fila["especialidad"];
+    $sub_array[] = $fila["domicilio"];
     $sub_array[] = '<button type="button" name="editar" id="' . $fila["id"] . '" class="btn btn-warning btn-xs editar">Editar</button>';
     $sub_array[] = '<button type="button" name="borrar" id="' . $fila["id"] . '" class="btn btn-danger btn-xs borrar">Borrar</button>';
     $datos[] = $sub_array;
