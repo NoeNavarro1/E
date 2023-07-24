@@ -6,7 +6,7 @@ if (isset($_POST["id_medico"])) { //Se verifica si se a enviado la variable "id_
     $salida = array(); //Se crea un arreglo vacio para almacenar los datos del medico.
 
     //Se prepara una consulta para seleccionar un registro de la tabla usuarios con el valor del id.
-    $stmt = $conexion ->prepare("SELECT * FROM medicos WHERE id = '".$_POST["id_medicos"]."' LIMIT 1");
+    $stmt = $conexion ->prepare("SELECT * FROM medicos WHERE id = '".$_POST["id_medico"]."' LIMIT 1");
     $stmt ->execute(); //se ejecuta la consulta
     $resultado = $stmt -> fetchAll(); //se obtienen todos los valores de la consulta  y se almacenan en la variable $resultado.
     foreach($resultado as $fila){

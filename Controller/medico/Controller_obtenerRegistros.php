@@ -8,7 +8,7 @@ $query = "SELECT * FROM medicos "; //Se asigna a $query una consulta SQL que sel
 
 if (isset($_POST["search"]["value"])) {
     // Se verifica si se ha enviado una cadena de búsqueda desde una solicitud POST
-    //filtrar los resultados por nombre, apellidos, teléfono o correo electrónico
+    //filtrar los resultados por nombre
     $query .= 'WHERE nombre LIKE "%' . $_POST["search"]["value"] . '%" ';
 }
 

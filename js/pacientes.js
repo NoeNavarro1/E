@@ -115,7 +115,7 @@ $(document).ready(function () {
                 $('#email').val(data.email);
                 $('#empresa').val(data.empresa);
                 $('#localidad').val(data.localidad);
-                $('.modal-title').text("Editar Paciente");
+                $('.modal-title').text("Editar paciente");
                 $('#id_usuario').val(id_usuario);
                 $('#action').val("Editar");
                 $('#operacion').val("Editar");

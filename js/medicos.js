@@ -75,7 +75,7 @@ $(document).ready(function () {
                         timer: 1500
                     });
                     $('#formulario')[0].reset();
-                    $('#modalUsuario').modal('hide');
+                    $('#modalMedico').modal('hide');
                     dataTable.ajax.reload(); //se recarga la tabla
                 }
             });
@@ -95,19 +95,19 @@ $(document).ready(function () {
     //Funcionalidad de editar
     $(document).on('click', '.editar', function () {
         //recupera el valor del atributo "id" del elemento en el que se hizo clic
-        var id_usuario = $(this).attr("id");
+        var id_medico = $(this).attr("id");
         $.ajax({
             url: '../../Controller/medico/Controller_obtenerRegistro.php',
             method: 'POST',
             data: {
-                id_usuario: id_usuario
+                id_medico: id_medico
             },
             dataType: 'json', //espera recibir datos en formato JSON como respuesta del servidor.
 
             //Si la solicitud AJAX tiene éxito, se ejecuta la función success
             success: function (data) {
                 //se utilizan para asignar los valores de los campos del formulario dentro del modal con los datos recibidos del servidor.
-                $('#modalUsuario').modal('show');
+                $('#modalMedico').modal('show');
                 $('#nombre').val(data.nombre);
                 $('#apellidos').val(data.apellidos);
                 $('#cedula').val(data.cedula);
@@ -131,7 +131,7 @@ $(document).ready(function () {
     //Funcionalidad de Borrar
     $(document).on('click', '.borrar', function () {
         // Recupera el valor del atributo "id" del elemento en el que se hizo clic
-        var id_usuario = $(this).attr('id');
+        var id_medico = $(this).attr('id');
 
         // Se muestra la ventana de confirmación con SweetAlert
         Swal.fire({
@@ -150,7 +150,7 @@ $(document).ready(function () {
                     url: '../../Controller/medico/Controller_borrarMedico.php',
                     method: 'POST',
                     data: {
-                        id_usuario: id_usuario
+                        id_medico: id_medico
                     },
                     success: function (data) {
                         Swal.fire({

@@ -22,8 +22,8 @@ if (isset($_SESSION['usuario'])) {
         <link rel="stylesheet" href="http://localhost/ecovida/css/normalize.css" type="text/css">
         <link rel="preload" href="http://localhost/ecovida/css/menu_lateral.css" type="text/css" as="style">
         <link rel="stylesheet" href="http://localhost/ecovida/css/menu_lateral.css" type="text/css">
-        <link rel="preload" href="http://localhost/ecovida/css/medicos.css" type="text/css" as="style">
-        <link rel="stylesheet" href="http://localhost/ecovida/css/medicos.css" type="text/css">
+        <link rel="preload" href="http://localhost/ecovida/css/medico.css" type="text/css" as="style">
+        <link rel="stylesheet" href="http://localhost/ecovida/css/medico.css" type="text/css">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
@@ -101,7 +101,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </a>
 
-                <a href="V_Usuarios.php">
+                <a href="../usuarios/V_usuarios.php">
                     <div class="option">
                         <i class="fa-solid fa-user" title="Usuario"></i>
                         <h4>Usuarios</h4>
@@ -132,7 +132,7 @@ if (isset($_SESSION['usuario'])) {
                 <div class="col-2 offset-10">
                     <div class="text-center">
                         <!-- Boton para modal -->
-                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalUsuario" id="botonCrear">
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalMedico" id="botonCrear">
                             <i class="bi bi-plus-circle-fill"></i> Crear
                         </button>
                     </div>
@@ -151,7 +151,7 @@ if (isset($_SESSION['usuario'])) {
                             <th>Telefono</th>
                             <th>Email</th>
                             <th>Especialidad</th>
-                            <th>Calle</th>                                                  
+                            <th>Domicilio</th>
                             <th width="20px">Editar</th>
                             <th width="20px">Eliminar</th>
                         </tr>
@@ -161,7 +161,7 @@ if (isset($_SESSION['usuario'])) {
         </div>
         <!--Ventana para el modal-->
         <!--Tiene un atributo id con el valor "modalUsuario" que se utiliza para identificarla en el código JavaScript-->
-        <div class="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalMedico" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog"> <!--definen la estructura interna de la ventana modal-->
                 <div class="modal-content contenedor"> <!--definen la estructura interna de la ventana modal-->
                     <div class="modal-header">
@@ -206,14 +206,26 @@ if (isset($_SESSION['usuario'])) {
                                     <label for="domicilio">Ingrese el domicilio:</label>
                                     <input type="text" name="domicilio" id="domicilio" class="form-control" autocomplete="off">
                                 </div>
-                                
+                            </div>
 
+                            <div class="datosUsuario">
+                                <h2>Datos Usuario</h2>
+                                <hr>
+                                <div class="campo">
+                                    <label for="usuario">Usuario:</label>
+                                    <input type="text" name="usuario" id="usuario" class="form-control" autocomplete="off">
+                                </div>
+
+                                <div class="campo">
+                                    <label for="usuario">Fecha de nacimiento:</label>
+                                    <input type="text" name="usuario" id="usuario" class="form-control" autocomplete="off">
+                                </div>
                             </div>
 
                             <div class="modal-footer"> <!--se incluyen campos ocultos-->
                                 <input type="hidden" name="id_medico" id="id_medico">
                                 <input type="hidden" name="operacion" id="operacion">
-                                <input type="submit" name="action" id="action" class="btn btn-success" value="Crear" onsubmit="return validarPassword()">
+                                <input type="submit" name="action" id="action" class="btn btn-success" value="Crear">
                             </div>
                         </div>
                     </form>

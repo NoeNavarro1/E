@@ -73,7 +73,7 @@ if (isset($_SESSION['usuario'])) {
                     </div>
                 </a>
 
-                <a href="#">
+                <a href="../medicos/V_medicos.php">
                     <div class="option">
                         <i class="fa-solid fa-user-doctor" title="Médico"></i>
                         <h4>Médico</h4>

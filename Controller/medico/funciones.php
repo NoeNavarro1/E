@@ -3,7 +3,7 @@
 //obtener el número total de registros en la tabla "usuarios" de la base de datos.
 function obtener_todos_registros(){
     include('../../Model/Conexion.php');
-    $stmt = $conexion -> prepare("SELECT * from pacientes");
+    $stmt = $conexion -> prepare("SELECT * from medicos");
     $stmt ->execute();
     //se almacena el resultado en la variable $resultado
     $resultado = $stmt -> fetchAll();
